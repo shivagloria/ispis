@@ -1,0 +1,22 @@
+{%  extends "layout.html" %}
+
+{%  block title %}Result of pin{%  endblock %}
+
+{%  block content %}
+<h1>Your New Event</h1><br><br>
+<p> <b>Event:</b> {{ title }}  </p>
+<p> <b>Date:</b> {{ month }} {{ day }}, {{ year }} </p>
+<p> <b>Time:</b> {{ time }} {{ ampm }} </p>
+<p> <b>Type:</b> {{ etype }} </p>
+
+<form action="/map">
+    <button type="submit">Cofirm Details</button>
+</form><br><br>
+
+<form action="/pin">
+    <button type="submit">Edit Information</button>
+</form>
+
+
+
+{% endblock %}
