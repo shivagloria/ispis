@@ -1,6 +1,7 @@
 import os
 from flask import Flask, url_for, render_template, request
 from flask import session
+import time
 
 
 
@@ -21,6 +22,10 @@ def render_map():
 def render_pin():
     return render_template('pin.html')
 
+@app.route('/about')
+def render_about():
+    return render_template('about.html')
+
 @app.route('/pin_result')
 def render_pin_result():
 	try:
@@ -31,11 +36,13 @@ def render_pin_result():
 		time_result = str(request.args['time'])
 		ampm_result = str(request.args['ampm'])
 		etype_result = str(request.args['etype'])
+		location_result = str(request.args['location'])
 		location1_result = float(request.args['location1'])
 		location2_result = float(request.args['location2'])
 		session['location1']=location1_result
 		session['location2']=location2_result
-		return render_template('pin_result.html',  title=title_result, month=month_result, day=day_result, year=year_result, time=time_result, ampm=ampm_result, etype=etype_result, location1=location1_result, location2=location2_result)
+		date_result = time.asctime( time.localtime(time.time()) )
+		return render_template('pin_result.html',  title=title_result, month=month_result, day=day_result, year=year_result, time=time_result, ampm=ampm_result, etype=etype_result, location=location_result, location1=location1_result, location2=location2_result, date=date_result)
 	except ValueError:
 		return "Sorry: something went wrong."
 
