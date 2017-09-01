@@ -58,7 +58,11 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
             map: map
         }) }
 	function TestMarker() {
+		//var l1 = {{ session['location1'] }}
+		//var l2 = {{ session['location2'] }}
 		UCSD = new google.maps.LatLng({{ session["location1"] }},{{ session["location2"] }})
+		//UCSD = new google.maps.LatLng(32.8801,-117.2340)
+		//UCSD = new google.maps.LatLng(l1,l2)
 		  addMarker(UCSD);
 		}
   

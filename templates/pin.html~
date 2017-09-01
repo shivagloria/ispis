@@ -5,7 +5,7 @@
 {%  block content %}
 
 <h1>Please enter the following details about your event.</h1><br><br>
-<form action="/pin_result" name="pin">
+<form action="/mpin_result" name="pin">
 	Event Title:
 	<input type="text" name="title" value="Please Enter the Name of Your Event"><br><br>
 	Date:
