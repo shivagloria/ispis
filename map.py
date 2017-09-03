@@ -132,7 +132,7 @@ def render_pin():
 
 @app.route('/about')
 def render_about():
-    return render_template('about.html',dump_user_data=user_data_print)
+    return render_template('about.html')
 
 @app.route('/pin_result')
 def render_pin_result():
