@@ -9,10 +9,6 @@ h1 {
 	font-weight: bold;
 }
 
-b {
-	font-family: "Lucida Console", serif;
-    font-size: 20px;
-}
 input {
     font-family: "Lucida Console", serif;
     font-size: 17px;
@@ -21,6 +17,20 @@ body,a {
  background-color: #eef;
     color: black;
 }
+
+b {
+    font-size:13px;
+    font-family: Roboto,Arial;
+   font-weight: bold; 
+}
+
+stuff {
+    font-size:13px;
+    font-family: Roboto,Arial;
+}
+
+h2 {
+    font-size:16px;
 </style>
 
 
@@ -92,8 +102,16 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 
 function addMarkerText(){
         google.maps.event.addListener(marker,'click',function() {
+            var contentString = '<div id="content">'+
+              '<div id="mtext">'+
+              '</div>'+
+              '<h2 id="etype" class="etype">{{session['etype']}}</h2>'+
+              '<div id="bodyContent">'+
+              '<b>Name: </b>'+ '<stuff>{{session['title']}}</stuff>' + '<br><b>Date: </b>' + '<stuff>{{session['month']}} {{session['day']}}, {{session['year']}}</stuff>' + '<br><b>Time: </b>' + '<stuff>{{session['time']}} {{session['ampm']}}</stuff>'
+              '</div>'+
+              '</div>';
             var infowindow = new google.maps.InfoWindow({
-                content:"UCSD Event"
+                content:contentString
         });
         infowindow.open(map,marker);
           });
