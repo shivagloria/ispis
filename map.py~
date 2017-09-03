@@ -61,7 +61,7 @@ def inject_github_org():
 #session.clear()
 
 @app.route('/')
-def render_main():
+def home():
     return render_template('home.html')
 
 @app.route('/login')
