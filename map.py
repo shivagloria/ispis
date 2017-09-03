@@ -45,6 +45,8 @@ def render_pin_result():
 		session['year']=year_result
 		session['time']=time_result
 		session['ampm']=ampm_result
+		session['etype']=etype_result
+		session['location']=location_result
 		session['location1']=location1_result
 		session['location2']=location2_result
 		date_result = time.asctime( time.localtime(time.time()) )

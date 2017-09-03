@@ -39,6 +39,13 @@ def render_pin_result():
 		location_result = str(request.args['location'])
 		location1_result = float(request.args['location1'])
 		location2_result = float(request.args['location2'])
+		session['title']=title_result
+		session['month']=month_result
+		session['day']=day_result
+		session['year']=year_result
+		session['time']=time_result
+		session['ampm']=ampm_result
+		session['etype']=etype_result
 		session['location1']=location1_result
 		session['location2']=location2_result
 		date_result = time.asctime( time.localtime(time.time()) )
