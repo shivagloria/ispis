@@ -1,0 +1,22 @@
+ {%  extends "layout.html" %}
+
+ {%  block title %}Home{%  endblock %}
+
+ {%  block content %}
+
+<style>
+h1 {
+    font-family: "Lucida Console", serif;
+	font-size: 40px;
+}
+x {
+    font-family: "Lucida Console", serif;
+	font-size: 20px;
+}
+
+</style>
+ <center> <h1><b><u>ISPI(s)</u></b></h1><br><br>
+    <x><a href="/map">View Events</a><br><br>
+    <a href="/pin">Host an Event</a><br><br>
+	<a href="/about">About/Help</a></x></center>
+ {%  endblock %}

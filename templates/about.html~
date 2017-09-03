@@ -15,6 +15,6 @@ x {
 }
 </style>
 <center><h1><b><u>Welcome to ISPI(s)!</u></b></h1><br><br>
-<x>Planning a party? Need a study buddy? Bored on a Friday night? <br><br><b> ISPI(s) is here to help! </b><br><br> Our goal is to provide hosts with a way to publicize their events, and UCSD students a way to better connect with their community. <br><br>To add an event you're hosting to our site, please visit our <a href="/pin">Create an Event Pin</a> page. To view events, please visit our <a href="/map">View Event Map</a> page. </x></center>
+<x>Planning a party? Need a study buddy? Bored on a Friday night? <br><br><b> ISPI(s) is here to help! </b><br><br> Our goal is to provide hosts with a way to publicize their events, and UCSD students a way to better connect with their community. <br><br>To add an event you're hosting to our site, please visit our <a href="/pin">Create an Event Pin</a> page. <br><br>To view events, please visit our <a href="/map">View Event Map</a> page. </x></center>
 
 {%  endblock %}

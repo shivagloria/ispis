@@ -20,6 +20,29 @@
                 <li><a href="/pin">Create Event</a></li>
                 <li><a href="/about">About/Help</a></li>
             </ul>
+
+<ul class="nav navbar-nav navbar-right">
+      
+   <!-- Checks if logged_in is true to display your github avatar and name -->  
+   <!-- logged_in is injected from webapp.py using the token from OAuth -->
+	{% if logged_in %}
+
+	<li><a class="navbar-brand" href="#">
+	    <img src="{{ session['user_data']['avatar_url'] }}&s=30" 
+		 width="30" height="30" style="display: inline-block;" ></a></li>
+	<li><p class="navbar-text">{{ session['user_data']['name']}}</p></li>	
+        <li><p class="navbar-text">Github userid: {{ session['user_data']['login']}}</li>
+	{% endif %}
+  
+        <!-- Displays the correct button to log the user in or out -->
+        <li>
+          {% if logged_in %}
+	          <a href="/logout">Logout</a>
+	        {% else %}
+	          <a href="/login">Login</a>
+	        {% endif %} 
+	      </li>
+      </ul>
             
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
