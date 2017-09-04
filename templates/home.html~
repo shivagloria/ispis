@@ -18,7 +18,7 @@ x {
  <center> <h1><b><u>ISPI(s)</u></b></h1><br><br>
     <x><a href="/map">View Events</a><br><br>
 <script>
-	window.alert("hello")</script>
+	window.alert("hello");</script>
     <a href="/pin">Host an Event</a><br><br>
 	<a href="/about">About/Help</a></x></center>
  {%  endblock %}
