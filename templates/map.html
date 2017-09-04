@@ -74,7 +74,7 @@ h2 {
             infoWindow.setContent('You Are Here!') 
             infoWindow.open(map);
             map.setCenter(pos);
-			//TestMarker();
+			TestMarker();
 
 	       
           }, function() {
@@ -94,7 +94,7 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
     function showPosition(pos) {
         markers.push(['test', position.coords.latitude, position.coords.longitude])
         }
-  /*function addMarker(location){
+  function addMarker(location){
         marker = new google.maps.Marker({
             position: location,
             map: map
@@ -142,7 +142,7 @@ function addMarkerText(title, time, date, etype, location){
 			UCSD = new google.maps.LatLng(l1,l2);
 		  	addMarker(UCSD);
 			addMarkerText(title, time, date, etype, location);
-		} */
+		} 
 
 	</script>
 	<script async defer
