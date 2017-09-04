@@ -131,7 +131,7 @@ function TestMarker(){
 		//UCSD = new google.maps.LatLng({{ session["location1"] }},{{ session["location2"] }})
 			UCSD = new google.maps.LatLng(l2,l2)
 		  	addMarker(UCSD);
-			addMarkerText();
+			addMarkerText(title, time, date, type, location);
 		}
 }
 }
