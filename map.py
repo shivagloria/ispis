@@ -68,7 +68,7 @@ def inject_logged_in():
 def inject_github_org():
     return dict(github_org=os.getenv('GITHUB_ORG'))
 
-#app.secret_key='w98fw9ef8hwe98fhwef'
+app.secret_key='w98fw9ef8hwe98fhwef'
 #session.clear()
 
 @app.route('/')
