@@ -95,7 +95,7 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
     function showPosition(pos) {
         markers.push(['test', position.coords.latitude, position.coords.longitude])
         }
-  function addMarker(location){
+  /*function addMarker(location){
         marker = new google.maps.Marker({
             position: location,
             map: map
@@ -118,22 +118,22 @@ function addMarkerText(title, time, date, etype, location){
           });
         }
 
-function TestMarker(){ 
-	templ1 = {{ l1 }}
-	templ2 = {{ l2 }} 
-	temptitle = {{ title }}
-	temptime = {{ time }} 
-	tempdate = {{ date }}
-	tempetype = {{ etype }} 
-	templocation = {{ location }}
+ function TestMarker(){ 
+	var templ1 = {{ l1 }}
+	var templ2 = {{ l2 }} 
+	var temptitle = {{ title }}
+	var temptime = {{ time }} 
+	var tempdate = {{ date }}
+	var tempetype = {{ etype }} 
+	var templocation = {{ location }}
 	for (x = 0; x < templ1.length; x++){
-		tl1 = templ1[x];
-		tl2 = templ2[x];
-		ttitle = temptitle[x];
-		ttime = temptime[x];
-		tdate = tempdate[x];
-		tetype = tempetype[x];
-		tlocation = templocation[x];
+		var tl1 = templ1[x];
+		var tl2 = templ2[x];
+		var ttitle = temptitle[x];
+		var ttime = temptime[x];
+		var tdate = tempdate[x];
+		var tetype = tempetype[x];
+		var tlocation = templocation[x];
 		TM(tl1, tl2, ttitle, ttime, tdate, tetype, tlocation);
 
 }
@@ -143,7 +143,7 @@ function TestMarker(){
 			UCSD = new google.maps.LatLng(l1,l2);
 		  	addMarker(UCSD);
 			addMarkerText(title, time, date, etype, location);
-		}
+		} */
 
 	</script>
 	<script async defer
