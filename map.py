@@ -147,7 +147,7 @@ def render_map():
 			#date_result.append(document["Date"])
 			#etype_result.append(document["Type"])
 			#location_result.append(document["Location"])
-			print ("hello")
+			print (document)
 		return render_template('map.html')#, l1 = l1_result, l2 = l2_result, title = title_result, time = time_result, date = date_result, etype = etype_result, location = location_result)
 
 @app.route('/pin')
