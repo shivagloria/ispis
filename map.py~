@@ -131,17 +131,23 @@ def authorized():
 
 @app.route('/map')
 def render_map():
+
+		
 		l1_result = []
 		l2_result = []
-		for x in range (0,db.collection.count()):
-			lo1 = mongo.db.events.find($position == x,"N/S Coordinate")
-			lo2 = mongo.db.events.find($position == x, "E/W Coordinate")
-			l1_result.append(x,lo1)
-			l2_result.append(x,lo2)
-		#	l1 = mongo.db.events.find("N/S Coordinate")
-		#	l2 = mongo.db.events.find("E/W Coordinate")
-		#	self.TestMarker(l1, l2)
-			x += 1
+		title_result = []
+		time_result = []
+		date_result = []
+		etype_result = []
+		location_result = []
+		for document in db.collection.find():
+			l1_result.append(document["N/S Coordinate"])
+			l2_result.append(document["E/W Coordinate"])
+			title_result.append(document["N/S Coordinate"])
+			time_result.append(document["E/W Coordinate"])
+			date_result.append(document["N/S Coordinate"])
+			etype_result.append(document["E/W Coordinate"])
+			location_result.append(document["N/S Coordinate"])
 		return render_template('map.html', l1_result = l1, l2_result = l2)
 
 @app.route('/pin')

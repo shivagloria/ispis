@@ -135,10 +135,19 @@ def render_map():
 		
 		l1_result = []
 		l2_result = []
-
+		title_result = []
+		time_result = []
+		date_result = []
+		etype_result = []
+		location_result = []
 		for document in db.collection.find():
 			l1_result.append(document["N/S Coordinate"])
 			l2_result.append(document["E/W Coordinate"])
+			title_result.append(document["Name"])
+			time_result.append(document["Time"])
+			date_result.append(document["Date"])
+			etype_result.append(document["Type"])
+			location_result.append(document["Location"])
 		return render_template('map.html', l1_result = l1, l2_result = l2)
 
 @app.route('/pin')

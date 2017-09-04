@@ -74,7 +74,7 @@ h2 {
             infoWindow.setContent('You Are Here!') 
             infoWindow.open(map);
             map.setCenter(pos);
-			//TestMarker();
+			TM();
 
 	       
           }, function() {
@@ -100,14 +100,14 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
             map: map
         }) }
 
-function addMarkerText(){
+function addMarkerText(title, time, date, type, location){
         google.maps.event.addListener(marker,'click',function() {
             var contentString = '<div id="content">'+
               '<div id="mtext">'+
               '</div>'+
-              '<h2>{{session['title']}}</h2>'+
+              '<h2>{{ title }}</h2>'+
               '<div id="bodyContent">'+
-              '<b>Type: </b>'+ '<stuff>{{session['etype']}}</stuff>' + '<br><b>Date: </b>' + '<stuff>{{session['date']}}</stuff>' + '<br><b>Time: </b>' + '<stuff>{{session['time']}} </stuff>' +'<br><b>Location: </b>'+ '<stuff>{{session['location']}}</stuff>'
+              '<b>Type: </b>'+ '<stuff>{{ type }}</stuff>' + '<br><b>Date:</b>' + '<stuff>date</stuff>' + '<br><b>Time: </b>' + '<stuff>{{ time }} </stuff>' +'<br><b>Location: </b>'+ '<stuff>{{ location }}</stuff>'
               '</div>'+
               '</div>';
             var infowindow = new google.maps.InfoWindow({
@@ -115,19 +115,26 @@ function addMarkerText(){
         });
         infowindow.open(map,marker);
           });
-        } 
+        }
+
+function TestMarker(){ 
 	for x in (0, l1.len()){
 		l1 = l1[x]
 		l2 = l2[x]
-		TestMarker(l1, l2)
-		function TestMarker(l1, l2) {
+		title = title[x]
+		time = time[x]
+		date = date[x]
+		type = type[x]
+		location = location[x]
+		TM(l1, l2)
+		function TM(l1, l2) {
 		//UCSD = new google.maps.LatLng({{ session["location1"] }},{{ session["location2"] }})
 			UCSD = new google.maps.LatLng(l2,l2)
 		  	addMarker(UCSD);
 			addMarkerText();
 		}
 }
-
+}
 
 	</script>
 	<script async defer
