@@ -74,7 +74,7 @@ h2 {
             infoWindow.setContent('You Are Here!') 
             infoWindow.open(map);
             map.setCenter(pos);
-			TM();
+			TestMarker();
 
 	       
           }, function() {
@@ -126,7 +126,7 @@ function TestMarker(){
 		date = date[x];
 		type = type[x];
 		location = location[x];
-		TM(l1, l2)
+		TM(l1, l2);
 		function TM(l1, l2) {
 		//UCSD = new google.maps.LatLng({{ session["location1"] }},{{ session["location2"] }})
 			UCSD = new google.maps.LatLng(l2,l2)
