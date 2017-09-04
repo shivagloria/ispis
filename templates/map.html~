@@ -74,7 +74,6 @@ h2 {
             infoWindow.setContent('You Are Here!') 
             infoWindow.open(map);
             map.setCenter(pos);
-			window.alert( "hello");
 			//TestMarker();
 
 	       
