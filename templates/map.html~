@@ -74,7 +74,7 @@ h2 {
             infoWindow.setContent('You Are Here!') 
             infoWindow.open(map);
             map.setCenter(pos);
-			TestMarker();
+			//TestMarker();
 
 	       
           }, function() {
@@ -119,21 +119,23 @@ function addMarkerText(title, time, date, etype, location){
 
 function TestMarker(){ 
 	for (x = 0; x < l1.length; x++){
-		l1 = l1[x];
-		l2 = l2[x];
-		title = title[x];
-		time = time[x];
-		date = date[x];
-		etype = etype[x];
-		location = location[x];
-		TM(l1, l2);
-		function TM(l1, l2) {
+		tl1 = l1[x];
+		tl2 = l2[x];
+		ttitle = title[x];
+		ttime = time[x];
+		tdate = date[x];
+		tetype = etype[x];
+		tlocation = location[x];
+		TM(tl1, tl2, ttitle, ttime, tdate, tetype, tlocation);
+
+}
+}
+
+		function TM(l1, l2, title, time, date, etype, location) {
 			UCSD = new google.maps.LatLng(l2,l2);
 		  	addMarker(UCSD);
-			addMarkerText(title, time, date, etype, location);
+			addMarkerText(ttitle, ttime, tdate, tetype, tlocation);
 		}
-}
-}
 
 	</script>
 	<script async defer

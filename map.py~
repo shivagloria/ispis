@@ -130,9 +130,7 @@ def authorized():
     return redirect(url_for('home'))    
 
 @app.route('/map')
-def render_map():
-
-		
+def render_map():		
 		l1_result = []
 		l2_result = []
 		title_result = []
@@ -140,7 +138,7 @@ def render_map():
 		date_result = []
 		etype_result = []
 		location_result = []
-		for document in db.collection.find():
+		for document in db.events.find():
 			l1_result.append(document["N/S Coordinate"])
 			l2_result.append(document["E/W Coordinate"])
 			title_result.append(document["Name"])
