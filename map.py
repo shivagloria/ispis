@@ -139,7 +139,7 @@ def render_map():
 		date_result = []
 		etype_result = []
 		location_result = []
-		for document in db.events.find():
+		for document in mongo.db.events.find():
 			x = type(document)
 		
 			#l1_result.append(document)
