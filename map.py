@@ -140,17 +140,14 @@ def render_map():
 		etype_result = []
 		location_result = []
 		for document in mongo.db.events.find():
-			x = type(document)
-		
-			#l1_result.append(document)
-			#l1_result.append(document["N/S Coordinate"])
-			#l2_result.append(document["E/W Coordinate"])
-			#title_result.append(document["Name"])
-			#time_result.append(document["Time"])
-			#date_result.append(document["Date"])
-			#etype_result.append(document["Type"])
-			#location_result.append(document["Location"])
-		return render_template('map.html', l1 = x)#, l1 = l1_result)#, l2 = l2_result, title = title_result, time = time_result, date = date_result, etype = etype_result, location = location_result)
+			l1_result.append(document["N/S Coordinate"])
+			l2_result.append(document["E/W Coordinate"])
+			title_result.append(document["Name"])
+			time_result.append(document["Time"])
+			date_result.append(document["Date"])
+			etype_result.append(document["Type"])
+			location_result.append(document["Location"])
+		return render_template('map.html', l1 = l1_result, l2 = l2_result, title = title_result, time = time_result, date = date_result, etype = etype_result, location = location_result)
 
 @app.route('/pin')
 def render_pin():

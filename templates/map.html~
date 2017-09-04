@@ -76,7 +76,7 @@ h2 {
             map.setCenter(pos);
 			l = {{ l1 }}
 			//window.alert( l.item(0) )
-			console.log(l1)
+			console.log(l)
 			//TestMarker();
 
 	       
