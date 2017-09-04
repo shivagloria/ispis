@@ -100,14 +100,14 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
             map: map
         }) }
 
-function addMarkerText(title, time, date, type, location){
+function addMarkerText(title, time, date, etype, location){
         google.maps.event.addListener(marker,'click',function() {
             var contentString = '<div id="content">'+
               '<div id="mtext">'+
               '</div>'+
               '<h2>{{ title }}</h2>'+
               '<div id="bodyContent">'+
-              '<b>Type: </b>'+ '<stuff>{{ type }}</stuff>' + '<br><b>Date:</b>' + '<stuff>date</stuff>' + '<br><b>Time: </b>' + '<stuff>{{ time }} </stuff>' +'<br><b>Location: </b>'+ '<stuff>{{ location }}</stuff>'
+              '<b>Type: </b>'+ '<stuff>{{ etype }}</stuff>' + '<br><b>Date:</b>' + '<stuff>date</stuff>' + '<br><b>Time: </b>' + '<stuff>{{ time }} </stuff>' +'<br><b>Location: </b>'+ '<stuff>{{ location }}</stuff>'
               '</div>'+
               '</div>';
             var infowindow = new google.maps.InfoWindow({
@@ -124,13 +124,13 @@ function TestMarker(){
 		title = title[x];
 		time = time[x];
 		date = date[x];
-		type = type[x];
+		etype = etype[x];
 		location = location[x];
 		TM(l1, l2);
 		function TM(l1, l2) {
 			UCSD = new google.maps.LatLng(l2,l2);
 		  	addMarker(UCSD);
-			addMarkerText(title, time, date, type, location);
+			addMarkerText(title, time, date, etype, location);
 		}
 }
 }
