@@ -132,9 +132,9 @@ function TestMarker(){
 }
 
 		function TM(l1, l2, title, time, date, etype, location) {
-			UCSD = new google.maps.LatLng(l2,l2);
+			UCSD = new google.maps.LatLng(l1,l2);
 		  	addMarker(UCSD);
-			addMarkerText(ttitle, ttime, tdate, tetype, tlocation);
+			addMarkerText(title, time, date, etype, location);
 		}
 
 	</script>
