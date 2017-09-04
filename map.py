@@ -3,6 +3,7 @@ from flask_oauthlib.client import OAuth
 from flask import render_template, flash, Markup
 from flask import session
 from flask_pymongo import PyMongo
+#import maps.html 
 
 from github import Github
 
@@ -77,7 +78,7 @@ def home():
 
 @app.route('/login')
 def login():
-    return github.authorize(callback=url_for('authorized'), _external=True, _scheme='https')
+    return github.authorize(callback=url_for('authorized', _external=True, _scheme='https'))
 
 @app.route('/logout')
 def logout():
@@ -135,6 +136,13 @@ def authorized():
 
 @app.route('/map')
 def render_map():
+		for x in range (0,db.collection.count()):
+			l1 = mongo.db.events.find("N/S Coordinate").next()
+		#	l1 = mongo.db.events.find("N/S Coordinate")
+			l2 = mongo.db.events.find("E/W Coordinate").next()
+		#	l2 = mongo.db.events.find("E/W Coordinate")
+			self.TestMarker()
+			x += 1
 		return render_template('map.html')
 
 @app.route('/pin')
