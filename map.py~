@@ -139,7 +139,7 @@ def render_map():
 		date_result = []
 		etype_result = []
 		location_result = []
-		#for document in db.events.find():
+		for document in db.events.find():
 			#l1_result.append(document["N/S Coordinate"])
 			#l2_result.append(document["E/W Coordinate"])
 			#title_result.append(document["Name"])
