@@ -74,7 +74,7 @@ h2 {
             infoWindow.setContent('You Are Here!') 
             infoWindow.open(map);
             map.setCenter(pos);
-			window.alert( l1[1]);
+			window.alert( "hello");
 			//TestMarker();
 
 	       
@@ -119,9 +119,16 @@ function addMarkerText(title, time, date, etype, location){
         }
 
 function TestMarker(){ 
-	for (x = 0; x < l1.length; x++){
-		tl1 = l1[x];
-		tl2 = l2[x];
+	templ1 = {{ l1 }}
+	templ2 = {{ l2 }} 
+	tempttitle = {{ title }}
+	tempttime = {{ time }} 
+	temptdate = {{ date }}
+	temptetype = {{ etype }} 
+	temptlocation = {{ location }}
+	for (x = 0; x < templ1.length; x++){
+		tl1 = templ1[x];
+		tl2 = templ2[x];
 		ttitle = title[x];
 		ttime = time[x];
 		tdate = date[x];

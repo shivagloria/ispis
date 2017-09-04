@@ -12,6 +12,8 @@ import sys
 import traceback
 import time
 
+#import win32api
+
 class GithubOAuthVarsNotDefined(Exception):
     '''raise this if the necessary env variables are not defined '''
 
@@ -73,7 +75,7 @@ def home():
 
 @app.route('/login')
 def login():
-    return github.authorize(callback=url_for('authorized', _external=True, _scheme='https'))
+    return github.authorize(callback=url_for('authorized', _external=True))#, _scheme='https'))
 
 @app.route('/logout')
 def logout():
@@ -130,7 +132,8 @@ def authorized():
     return redirect(url_for('home'))    
 
 @app.route('/map')
-def render_map():		
+def render_map():	
+		#win32api.MessageBox(0,'hello','title')	
 		l1_result = []
 		l2_result = []
 		title_result = []
