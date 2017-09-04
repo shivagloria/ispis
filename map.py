@@ -12,7 +12,6 @@ import sys
 import traceback
 import time
 
-#import win32api
 
 class GithubOAuthVarsNotDefined(Exception):
     '''raise this if the necessary env variables are not defined '''
@@ -133,23 +132,22 @@ def authorized():
 
 @app.route('/map')
 def render_map():	
-		#win32api.MessageBox(0,'hello','title')	
-		l1_result = []
-		l2_result = []
-		title_result = []
-		time_result = []
-		date_result = []
-		etype_result = []
-		location_result = []
-		for document in db.events.find():
-			l1_result.append(document["N/S Coordinate"])
-			l2_result.append(document["E/W Coordinate"])
-			title_result.append(document["Name"])
-			time_result.append(document["Time"])
-			date_result.append(document["Date"])
-			etype_result.append(document["Type"])
-			location_result.append(document["Location"])
-		return render_template('map.html', l1 = l1_result, l2 = l2_result, title = title_result, time = time_result, date = date_result, etype = etype_result, location = location_result)
+		#l1_result = []
+		#l2_result = []
+		#title_result = []
+		#time_result = []
+		#date_result = []
+		#etype_result = []
+		#location_result = []
+		#for document in db.events.find():
+			#l1_result.append(document["N/S Coordinate"])
+			#l2_result.append(document["E/W Coordinate"])
+			#title_result.append(document["Name"])
+			#time_result.append(document["Time"])
+			#date_result.append(document["Date"])
+			#etype_result.append(document["Type"])
+			#location_result.append(document["Location"])
+		return render_template('map.html')#, l1 = l1_result, l2 = l2_result, title = title_result, time = time_result, date = date_result, etype = etype_result, location = location_result)
 
 @app.route('/pin')
 def render_pin():
