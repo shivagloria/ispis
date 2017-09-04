@@ -11,7 +11,7 @@ p {
 }
 h1 {
     font-family: "Lucida Console", serif;
-	font-size: 30px;
+	font-size: 40px;
 }
 x {
     font-family: "Lucida Console", serif;
@@ -19,7 +19,7 @@ x {
 }
 
 </style>
-<center><h1><b>New Event</b></h1><br><br>
+<center><h1><b><u>New Event</u></b></h1><br><br>
 <p> <b>Event:</b> {{ title }}  </p>
 <p> <b>Date:</b> {{ month }} {{ day }}, {{ year }} </p>
 <p> <b>Time:</b> {{ time }} {{ ampm }} </p>
