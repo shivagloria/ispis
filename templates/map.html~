@@ -76,7 +76,7 @@ h2 {
             infoWindow.open(map);
             map.setCenter(pos);
 			l = {{ l1 }};
-			window.alert(l); 
+			window.alert(l[0]); 
 		//	TestMarker();
 
 	       

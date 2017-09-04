@@ -75,9 +75,9 @@ h2 {
             infoWindow.setContent('You Are Here!') 
             infoWindow.open(map);
             map.setCenter(pos);
-			l = {{ l1 }};
-			window.alert(l[0]); 
-		//	TestMarker();
+		//	l = {{ l1 }};
+		//	window.alert(l[0]); 
+			TestMarker();
 
 	       
           }, function() {
@@ -97,7 +97,7 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
     function showPosition(pos) {
         markers.push(['test', position.coords.latitude, position.coords.longitude])
         }
- /* function addMarker(location){
+ /*function addMarker(location){
         marker = new google.maps.Marker({
             position: location,
             map: map
@@ -118,7 +118,7 @@ function addMarkerText(title, time, date, etype, location){
         });
         infowindow.open(map,marker);
           });
-        }
+        } */
 
  function TestMarker(){ 
 	var templ1 = {{ l1 }}
@@ -136,11 +136,11 @@ function addMarkerText(title, time, date, etype, location){
 		var tdate = tempdate[x];
 		var tetype = tempetype[x];
 		var tlocation = templocation[x];
-		TM(tl1, tl2, ttitle, ttime, tdate, tetype, tlocation);
+	//	TM(tl1, tl2, ttitle, ttime, tdate, tetype, tlocation);
 
 }
 }
-		function TM(l1, l2, title, time, date, etype, location) {
+	/*	function TM(l1, l2, title, time, date, etype, location) {
 			UCSD = new google.maps.LatLng(l1,l2);
 		  	addMarker(UCSD);
 			addMarkerText(title, time, date, etype, location);
