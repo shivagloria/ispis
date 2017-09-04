@@ -57,6 +57,7 @@ h2 {
 
 <center><h1> <u>Events </u></h1>
        <a href="/"> Home</a>  ~*~  <a href="/pin"> Create Event</a>  ~*~  <a href="/about"> About/Help </a></center><br>
+<script> window.alert("hello"); </script>
     <div id="map"></div>
     <script>
       var map, infoWindow, marker;
@@ -74,9 +75,9 @@ h2 {
             infoWindow.setContent('You Are Here!') 
             infoWindow.open(map);
             map.setCenter(pos);
-			l = {{ l1 }};
-			window.alert("hello");
-			TestMarker();
+		//	l = {{ l1 }};
+			
+		//	TestMarker();
 
 	       
           }, function() {
@@ -139,7 +140,6 @@ function addMarkerText(title, time, date, etype, location){
 
 }
 }
-
 		function TM(l1, l2, title, time, date, etype, location) {
 			UCSD = new google.maps.LatLng(l1,l2);
 		  	addMarker(UCSD);
