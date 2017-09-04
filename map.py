@@ -3,7 +3,6 @@ from flask_oauthlib.client import OAuth
 from flask import render_template, flash, Markup
 from flask import session
 from flask_pymongo import PyMongo
-#import maps.html 
 
 from github import Github
 
@@ -12,10 +11,6 @@ import os
 import sys
 import traceback
 import time
-
-
-
-
 
 class GithubOAuthVarsNotDefined(Exception):
     '''raise this if the necessary env variables are not defined '''
@@ -136,14 +131,15 @@ def authorized():
 
 @app.route('/map')
 def render_map():
-		for x in range (0,db.collection.count()):
-			l1 = mongo.db.events.find("N/S Coordinate").next()
-		#	l1 = mongo.db.events.find("N/S Coordinate")
-			l2 = mongo.db.events.find("E/W Coordinate").next()
-		#	l2 = mongo.db.events.find("E/W Coordinate")
-			self.TestMarker()
-			x += 1
-		return render_template('map.html')
+
+		
+		l1_result = []
+		l2_result = []
+
+		for document in db.collection.find():
+			l1_result.append(document["N/S Coordinate"])
+			l2_result.append(document["E/W Coordinate"])
+		return render_template('map.html', l1_result = l1, l2_result = l2)
 
 @app.route('/pin')
 def render_pin():
