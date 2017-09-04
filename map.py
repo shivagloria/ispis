@@ -13,12 +13,7 @@ import traceback
 import time
 
 
-app.config['MONGO_HOST'] = os.environ['MONGO_HOST']
-app.config['MONGO_PORT'] = int(os.environ['MONGO_PORT'])
-app.config['MONGO_DBNAME'] = os.environ['MONGO_DBNAME']
-app.config['MONGO_USERNAME'] = os.environ['MONGO_USERNAME']
-app.config['MONGO_PASSWORD'] = os.environ['MONGO_PASSWORD']
-mongo = PyMongo(app)
+
 
 
 class GithubOAuthVarsNotDefined(Exception):
@@ -42,6 +37,12 @@ app.debug = False
 
 app.secret_key = os.environ['APP_SECRET_KEY']
 oauth = OAuth(app)
+app.config['MONGO_HOST'] = os.environ['MONGO_HOST']
+app.config['MONGO_PORT'] = int(os.environ['MONGO_PORT'])
+app.config['MONGO_DBNAME'] = os.environ['MONGO_DBNAME']
+app.config['MONGO_USERNAME'] = os.environ['MONGO_USERNAME']
+app.config['MONGO_PASSWORD'] = os.environ['MONGO_PASSWORD']
+mongo = PyMongo(app)
 
 github = oauth.remote_app(
     'github',
@@ -168,7 +169,7 @@ def render_pin_result():
 		session['location1']=location1_result
 		session['location2']=location2_result
 		date_result = time.asctime( time.localtime(time.time()) )
-		mongo.db.NAME_OF_YOUR_COLLECTION.insert_one( {"Name": title_result, "Type": etype_result, "Date": month_result + " " + day_result + "'" + year_result, "Time": time_result + " " + ampm_result, "Location": location_result})
+		mongo.db.NAME_OF_YOUR_COLLECTION.insert_one( {"Name": "title_result", "Type": "etype_result", "Date": "month_result" + " " + "day_result" + "'" + "year_result", "Time": "time_result" + " " + "ampm_result", "Location": "location_result"})
 		return render_template('pin_result.html',  title=title_result, month=month_result, day=day_result, year=year_result, time=time_result, ampm=ampm_result, etype=etype_result, location=location_result, location1=location1_result, location2=location2_result, date=date_result)
 	except ValueError:
 		return "Sorry: something went wrong."
