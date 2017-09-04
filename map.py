@@ -132,13 +132,13 @@ def authorized():
 
 @app.route('/map')
 def render_map():	
-		#l1_result = []
-		#l2_result = []
-		#title_result = []
-		#time_result = []
-		#date_result = []
-		#etype_result = []
-		#location_result = []
+		l1_result = []
+		l2_result = []
+		title_result = []
+		time_result = []
+		date_result = []
+		etype_result = []
+		location_result = []
 		#for document in db.events.find():
 			#l1_result.append(document["N/S Coordinate"])
 			#l2_result.append(document["E/W Coordinate"])
