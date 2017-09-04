@@ -12,6 +12,8 @@ import sys
 import traceback
 import time
 
+import win32api
+
 class GithubOAuthVarsNotDefined(Exception):
     '''raise this if the necessary env variables are not defined '''
 
@@ -130,7 +132,8 @@ def authorized():
     return redirect(url_for('home'))    
 
 @app.route('/map')
-def render_map():		
+def render_map():	
+		win32api.MessageBox(0,'hello','title')	
 		l1_result = []
 		l2_result = []
 		title_result = []
