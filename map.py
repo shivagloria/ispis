@@ -50,7 +50,7 @@ github = oauth.remote_app(
     access_token_url='https://github.com/login/oauth/access_token',
     authorize_url='https://github.com/login/oauth/authorize'
 )
-#app.config['MONGO_HOST'] = os.environ['MONGO_HOST']
+app.MONGO_HOST = os.environ['MONGO_HOST']
 #app.config['MONGO_PORT'] = int(os.environ['MONGO_PORT'])
 #app.config['MONGO_DBNAME'] = os.environ['MONGO_DBNAME']
 #app.config['MONGO_USERNAME'] = os.environ['MONGO_USERNAME']
