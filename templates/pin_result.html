@@ -21,12 +21,12 @@ x {
 </style>
 <center><h1><b><u>New Event</u></b></h1><br><br>
 <p> <b>Event:</b> {{ title }}  </p>
-<p> <b>Date:</b> {{ month }} {{ day }}, {{ year }} </p>
-<p> <b>Time:</b> {{ time }} {{ ampm }} </p>
+<p> <b>Date:</b> {{ date }} </p>
+<p> <b>Time:</b> {{ time }}  </p>
 <p> <b>Type:</b> {{ etype }} </p>
 <p> <b>Location:</b> {{ location }} </p>
 <p> <b>Location Coordinates:</b> {{ session['location1'] }}, {{ session['location2']}}</p>
-<x> [ Created: {{ date }} ] <x>
+<x> [ Created: {{ dat }} ] <x>
 <br><br>
 <form action="/map">
     <button type="submit">Confirm Details</button>

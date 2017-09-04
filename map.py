@@ -149,30 +149,22 @@ def render_about():
 def render_pin_result():
 	try:
 		title_result = str(request.args['title'])
-		month_result = str(request.args['month'])
-		day_result = int(request.args['day'])
-		year_result = int(request.args['year'])
-		time_result = str(request.args['time'])
-		ampm_result = str(request.args['ampm'])
+		date_result = str(request.args['month'] + " " + request.args['day'] +  ", " + request.args['year'])
+		time_result = str(request.args['time'] +  " " + request.args['ampm'])
 		etype_result = str(request.args['etype'])
 		location_result = str(request.args['location'])
 		location1_result = float(request.args['location1'])
 		location2_result = float(request.args['location2'])
 		session['title']=title_result
-		session['month']=month_result
-		session['day']=day_result
-		session['year']=year_result
+		session['date']=date_result
 		session['time']=time_result
-		session['ampm']=ampm_result
 		session['etype']=etype_result
 		session['location']=location_result
 		session['location1']=location1_result
 		session['location2']=location2_result
-		tdb = time_result + " " + ampm_result
-		ddb = month_result + " " + day_result + "," + year_result
-		date_result = time.asctime( time.localtime(time.time()) )
-		mongo.db.events.insert_one( {"Name": title_result, "Type": etype_result, "Date": ddb, "Time": tdb, "Location": location_result})
-		return render_template('pin_result.html',  title=title_result, month=month_result, day=day_result, year=year_result, time=time_result, ampm=ampm_result, etype=etype_result, location=location_result, location1=location1_result, location2=location2_result, date=date_result)
+		dat_result = time.asctime( time.localtime(time.time()) )
+		mongo.db.events.insert_one( {"Name": title_result, "Type": etype_result, "Date": date_result, "Time": time_result, "Location": location_result, "N/S Coordinate": location1_result, "E/W Coordinate": location2_result})
+		return render_template('pin_result.html',  title=title_result, date=date_result, time=time_result, etype=etype_result, location=location_result, location1=location1_result, location2=location2_result, dat=dat_result)
 	except ValueError:
 		return "Sorry: something went wrong."
 
