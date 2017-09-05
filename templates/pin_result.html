@@ -17,9 +17,13 @@ x {
     font-family: "Lucida Console", serif;
 	font-size: 12px;
 }
+m {
+    font-family: "Lucida Console", serif;
+    font-size: 22px;
+}
 
 </style>
-<center><h1><b><u>New Event</u></b></h1><br><br>
+<center><h1><b><u>Your New Event</u></b></h1><br><br>
 <p> <b>Event:</b> {{ title }}  </p>
 <p> <b>Date:</b> {{ date }} </p>
 <p> <b>Time:</b> {{ stime }} - {{ etime }}</p>
@@ -28,14 +32,14 @@ x {
 <p> <b>Location:</b> {{ location }} </p>
 <p> <b>Location Coordinates:</b> {{ location1 }}, {{ location2 }}</p>
 <x> [ Created: {{ dat }} ] <x>
-<br><br>
-<form action="/map">
-    <button type="submit">Confirm Details</button>
-</form><br><br>
+<br><br><br><br>
+<m><form action="/map">
+    <button type="submit">Return to Map</button>
+</form><br><br></m>
 
-<form action="/pin">
+<!--<form action="/pin">
     <button type="submit">Edit Information</button>
-</form></center>
+</form></center> -->
 
 
 

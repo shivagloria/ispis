@@ -1,0 +1,43 @@
+{%  extends "layout.html" %}
+
+{%  block title %}Create Event{%  endblock %}
+
+{%  block content %}
+<style>
+p {
+    font-family: "Lucida Console", serif;
+	font-size: 17px;
+}
+h1 {
+    font-family: "Lucida Console", serif;
+	font-size: 40px;
+}
+x {
+    font-family: "Lucida Console", serif;
+	font-size: 12px;
+}
+form {
+	font-family: "Lucida Console", serif;
+	font-size: 20px;
+
+}
+
+</style>
+<h1><center><b><u>Thank you for RSVP'ing!</u></b></center></h1><br><br>
+<p> <b>Event:</b> {{ session['title'] }}  </p>
+<p> <b>Date:</b> {{ session['date'] }} </p>
+<p> <b>Time:</b> {{ session['stime'] }} - {{ session['etime'] }}</p>
+<p> <b>Type:</b> {{ session['etype'] }} </p>
+<p> <b>Capacity:</b> {{ session['capacity'] }} </p>
+<p> <b>Location:</b> {{ session['location'] }} </p>
+<p> <b>Location Coordinates:</b> {{ session['location1'] }}, {{ session['location2'] }}</p>
+<center>
+<form action="/map">
+    <button type="submit">Return to Map</button>
+</form><br><br>
+
+<form id="gform" method="POST" action="https://script.google.com/macros/s/AKfycbyzDgskeb4vhxevrHqyzQxgWHPkxySDJmoJN9j-Fe7kHUUJbOA/exec"></form>
+</center>
+
+
+{%  endblock %}

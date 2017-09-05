@@ -163,6 +163,10 @@ def render_pin():
 def render_about():
     return render_template('about.html')
 
+@app.route('/rsvp')
+def render_rsvp():
+	return render_template('rsvp.html')
+
 @app.route('/pin_result')
 def render_pin_result():
 	try:
@@ -176,9 +180,17 @@ def render_pin_result():
 		location1_result = float(request.args['location1'])
 		location2_result = float(request.args['location2'])
 		dat_result = time.asctime( time.localtime(time.time()) )
-		#mongo.db.events.create_index("expires",  expireAfterSeconds = 10)
-		#datetime_object = datetime.strptime("Sep 5 2017 12:00PM", "%b %d %Y %I:%M%p")
-		mongo.db.events.insert_one( {"Name": title_result, "Type": etype_result, "Date": date_result, "Start Time": stime_result, "End Time": etime_result, "Capacity": capacity_result, "Location": location_result, "N/S Coordinate": location1_result, "E/W Coordinate": location2_result }) #"expires": datetime.datetime.isoformat(datetime_object)} )
+		session['title'] = title_result
+		session['date'] = date_result
+		session['stime'] = stime_result
+		session['etime'] = etime_result
+		session['etype'] = etype_result
+		session['capacity'] = capacity_result
+		session['location'] = location_result
+		session['location1'] = location1_result
+		session['location2'] = location2_result
+		mongo.db.events.create_index([("expires", 1)], expireAfterSeconds=0)
+		mongo.db.events.insert_one( {"Name": title_result, "Type": etype_result, "Date": date_result, "Start Time": stime_result, "End Time": etime_result, "Capacity": capacity_result, "Location": location_result, "N/S Coordinate": location1_result, "E/W Coordinate": location2_result, "expires": datetime.datetime(2017,9,5,1,40,0,0)} )
 		return render_template('pin_result.html',  title=title_result, date=date_result, stime=stime_result, etime=etime_result, etype=etype_result, location=location_result, location1=location1_result, location2=location2_result, dat=dat_result, capacity = capacity_result)
 	except ValueError:
 		return "Sorry: something went wrong."
