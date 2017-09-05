@@ -12,8 +12,8 @@ import os
 import sys
 import traceback
 import time
-import datetime
-
+from datetime import datetime
+from pytz import timezone
 
 class GithubOAuthVarsNotDefined(Exception):
     '''raise this if the necessary env variables are not defined '''
@@ -171,9 +171,12 @@ def render_rsvp():
 def render_pin_result():
 	try:
 		title_result = str(request.args['title'])
+		day_result = int(request.args['day'])
+		month_result = int(request.args['month'])
+		year_result = int(request.args['year'])
 		date_result = str(request.args['month'] + " " + request.args['day'] +  ", " + request.args['year'])
-		stime_result = str(request.args['stime'] +  " " + request.args['sampm'])
-		etime_result = str(request.args['etime'] +  " " + request.args['eampm'])
+		stime_result = int(request.args['stime'])
+		etime_result = int(request.args['etime'])
 		etype_result = str(request.args['etype'])
 		capacity_result = int(request.args['capacity'])
 		location_result = str(request.args['location'])
@@ -189,8 +192,10 @@ def render_pin_result():
 		session['location'] = location_result
 		session['location1'] = location1_result
 		session['location2'] = location2_result
-		mongo.db.events.create_index([("expires", 1)], expireAfterSeconds=0)
-		mongo.db.events.insert_one( {"Name": title_result, "Type": etype_result, "Date": date_result, "Start Time": stime_result, "End Time": etime_result, "Capacity": capacity_result, "Location": location_result, "N/S Coordinate": location1_result, "E/W Coordinate": location2_result, "expires": datetime.datetime(2017,9,5,1,40,0,0)} )
+		ts = datetime(year_result,month_result,day_result,etime_result,0,0,0)
+		utc = ts.astimezone(timezone('UTC'))
+		mongo.db.events.create_index("expiress", expireAfterSeconds=int(0))
+		mongo.db.events.insert_one( {"Name": title_result, "Type": etype_result, "Date": date_result, "Start Time": stime_result, "End Time": etime_result, "Capacity": capacity_result, "Location": location_result, "N/S Coordinate": location1_result, "E/W Coordinate": location2_result, "expiress": utc} )
 		return render_template('pin_result.html',  title=title_result, date=date_result, stime=stime_result, etime=etime_result, etype=etype_result, location=location_result, location1=location1_result, location2=location2_result, dat=dat_result, capacity = capacity_result)
 	except ValueError:
 		return "Sorry: something went wrong."

@@ -35,6 +35,8 @@ form {
 <form action="/map">
     <button type="submit">Return to Map</button>
 </form><br><br>
+
+<form id="gform" method="POST" action="https://script.google.com/macros/s/AKfycbyzDgskeb4vhxevrHqyzQxgWHPkxySDJmoJN9j-Fe7kHUUJbOA/exec"></form>
 </center>
 
 
