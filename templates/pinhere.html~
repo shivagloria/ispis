@@ -21,7 +21,7 @@ input {
 
 </style>
 <h1><center><u>Create Event</u></center></h1><br><br>
-<form action="/pin_result" name="pin">
+<form action="/map" name="pin">
 <x>	<b> Event Title: </b>
 	<input type="text" name="title" value="Name of Event"  onblur="if (this.value == '') {this.value = 'Name of Event';}" onfocus="if (this.value == 'Name of Event') {this.value = '';}" ><br><br>
 	<b> Date: </b>
@@ -70,8 +70,8 @@ input {
 	<b> Building/Location Name: </b>
 	<input type="text" name="location" value="Asante House" onblur="if (this.value == '') {this.value = 'Asante House';}" onfocus="if (this.value == 'Asante House') {this.value = '';}"><br><br>
 	<b> Location Coordinates (N/S, W/E): </b>
-	<input type="text" name="location1" value=lat onblur="if (this.value == '') {this.value = '32.8801';}" onfocus="if (this.value == '32.8801') {this.value = '';}">
-	<input type="text" name="location2" value=lng onblur="if (this.value == '') {this.value = '-117.2340';}" onfocus="if (this.value == '-117.2340') {this.value = '';}"><br><br>
+	<input type="text" name="location1" value="lat" onblur="if (this.value == '') {this.value = '32.8801';}" onfocus="if (this.value == '32.8801') {this.value = '';}">
+	<input type="text" name="location2" value="lng" onblur="if (this.value == '') {this.value = '-117.2340';}" onfocus="if (this.value == '-117.2340') {this.value = '';}"><br><br>
 	<center><input type="submit" value="Submit"></center> </x>
 </form>
 

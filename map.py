@@ -137,7 +137,8 @@ def render_map():
 		l1_result = []
 		l2_result = []
 		title_result = []
-		time_result = []
+		stime_result = []
+		etime_result = []
 		date_result = []
 		etype_result = []
 		location_result = []
@@ -145,11 +146,12 @@ def render_map():
 			l1_result.append(document["N/S Coordinate"])
 			l2_result.append(document["E/W Coordinate"])
 			title_result.append(document["Name"])
-			time_result.append(document["Time"])
+			stime_result.append(document["Start Time"])
+			etime_result.append(document["End Time"])
 			date_result.append(document["Date"])
 			etype_result.append(document["Type"])
 			location_result.append(document["Location"])
-		return render_template('map.html', l1 = l1_result, l2 = l2_result, title = title_result, time = time_result, date = date_result, etype = etype_result, location = location_result)
+		return render_template('map.html', l1 = l1_result, l2 = l2_result, title = title_result, stime = stime_result, etime = etime_result, date = date_result, etype = etype_result, location = location_result)
 
 @app.route('/pin')
 def render_pin():
@@ -159,31 +161,20 @@ def render_pin():
 def render_about():
     return render_template('about.html')
 
-
-@app.route('/pinhere')
-def render_pinhere():
-    return render_template('pinhere.html')
-
 @app.route('/pin_result')
 def render_pin_result():
 	try:
 		title_result = str(request.args['title'])
 		date_result = str(request.args['month'] + " " + request.args['day'] +  ", " + request.args['year'])
-		time_result = str(request.args['time'] +  " " + request.args['ampm'])
+		stime_result = str(request.args['stime'] +  " " + request.args['sampm'])
+		etime_result = str(request.args['etime'] +  " " + request.args['eampm'])
 		etype_result = str(request.args['etype'])
 		location_result = str(request.args['location'])
 		location1_result = float(request.args['location1'])
 		location2_result = float(request.args['location2'])
-		session['title']=title_result
-		session['date']=date_result
-		session['time']=time_result
-		session['etype']=etype_result
-		session['location']=location_result
-		session['location1']=location1_result
-		session['location2']=location2_result
 		dat_result = time.asctime( time.localtime(time.time()) )
-		mongo.db.events.insert_one( {"Name": title_result, "Type": etype_result, "Date": date_result, "Time": time_result, "Location": location_result, "N/S Coordinate": location1_result, "E/W Coordinate": location2_result})
-		return render_template('pin_result.html',  title=title_result, date=date_result, time=time_result, etype=etype_result, location=location_result, location1=location1_result, location2=location2_result, dat=dat_result)
+		mongo.db.events.insert_one( {"Name": title_result, "Type": etype_result, "Date": date_result, "Start Time": stime_result, "End Time": etime_result, "Location": location_result, "N/S Coordinate": location1_result, "E/W Coordinate": location2_result})
+		return render_template('pin_result.html',  title=title_result, date=date_result, stime=stime_result, etime=etime_result, etype=etype_result, location=location_result, location1=location1_result, location2=location2_result, dat=dat_result)
 	except ValueError:
 		return "Sorry: something went wrong."
 
