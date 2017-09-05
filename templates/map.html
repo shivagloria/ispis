@@ -69,6 +69,7 @@ h2 {
 		var tempetime = {{ etime|safe }}
 		var tempdate = {{ date|safe }}
 		var tempetype = {{ etype|safe }}
+		var tempcapacity = {{ capacity|safe }}
 		var templocation = {{ location|safe }}
 		for (x = 0; x < templ1.length; x++){
 			var tl1 = templ1[x];
@@ -78,14 +79,15 @@ h2 {
 			var tetime = tempetime[x];
 			var tdate = tempdate[x];
 			var tetype = tempetype[x];
+			var tcapacity = tempcapacity[x];
 			var tlocation = templocation[x];
-		    TM(tl1, tl2, ttitle, tstime, tetime, tdate, tetype, tlocation);
+		    TM(tl1, tl2, ttitle, tstime, tetime, tdate, tetype, tlocation, tcapacity);
 		}
       }
 
-	  function TM(l1, l2, ttitle, tstime, tetime, tdate, tetype, tlocation) {
+	  function TM(l1, l2, ttitle, tstime, tetime, tdate, tetype, tlocation, tcapacity) {
 			UCSD = new google.maps.LatLng(l1,l2);
-		  	addMarker(UCSD, ttitle, tstime, tetime, tdate, tetype, tlocation);
+		  	addMarker(UCSD, ttitle, tstime, tetime, tdate, tetype, tlocation, tcapacity);
 			
 	  }
 
@@ -122,22 +124,22 @@ h2 {
         markers.push(['test', position.coords.latitude, position.coords.longitude])
     }
 
- function addMarker(location, ttitle, tstime, tetime, tdate, tetype, tlocation){
+ function addMarker(location, ttitle, tstime, tetime, tdate, tetype, tlocation, tcapacity){
         marker = new google.maps.Marker({
             position: location,
             map: map
         })
-		addMarkerText(marker, ttitle, tstime, tetime, tdate, tetype, tlocation);
+		addMarkerText(marker, ttitle, tstime, tetime, tdate, tetype, tlocation, tcapacity);
 	 }
 
-function addMarkerText(marker, ttitle, tstime, tetime, tdate, tetype, tlocation){
+function addMarkerText(marker, ttitle, tstime, tetime, tdate, tetype, tlocation, tcapacity){
         google.maps.event.addListener(marker,'click',function() {
             var contentString = '<div id="content">'+
               '<div id="mtext">'+
               '</div>'+
               '<h2>'+ttitle+'</h2>'+
               '<div id="bodyContent">'+
-              '<b>Type: </b>'+ '<stuff> '+tetype+'</stuff>' + '<br><b>Date:</b>' + '<stuff> '+tdate+' </stuff>' + '<br><b>Start Time: </b>' + '<stuff>'+tstime+' </stuff>'  + '<br><b>End Time: </b>' + '<stuff>'+tetime+' </stuff>'+'<br><b>Location: </b>'+ '<stuff>'+tlocation+'</stuff>'
+              '<b>Type: </b>'+ '<stuff> '+tetype+'</stuff>' +  '<br><b>Capacity: </b>'+ '<stuff> '+tcapacity+'</stuff>' + '<br><b>Date:</b>' + '<stuff> '+tdate+' </stuff>' + '<br><b>Time: </b>' + '<stuff>'+tstime+' </stuff>'  + " - " + '<stuff>'+tetime+' </stuff>'+'<br><b>Location: </b>'+ '<stuff>'+tlocation+'</stuff>' 
               '</div>'+
               '</div>';
             var infowindow = new google.maps.InfoWindow({

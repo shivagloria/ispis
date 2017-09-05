@@ -86,6 +86,8 @@ input {
 		<option value="Casual">Casual</option>
 		<option value="21+">21+</option>
 	</select><br><br>
+	<x>	<b> Event Capacity: </b>
+	<input type="text" name="title" value="20"  onblur="if (this.value == '') {this.value = '20';}" onfocus="if (this.value == '20') {this.value = '';}" ><br><br>
 	<b> Building/Location Name: </b>
 	<input type="text" name="location" value="Asante House" onblur="if (this.value == '') {this.value = 'Asante House';}" onfocus="if (this.value == 'Asante House') {this.value = '';}"><br><br>
 	<b> Location Coordinates (N/S, W/E): </b>

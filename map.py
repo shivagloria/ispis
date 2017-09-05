@@ -12,7 +12,7 @@ import os
 import sys
 import traceback
 import time
-import html.parser as htmlparser
+import datetime
 
 
 class GithubOAuthVarsNotDefined(Exception):
@@ -139,6 +139,7 @@ def render_map():
 		title_result = []
 		stime_result = []
 		etime_result = []
+		capacity_result = []
 		date_result = []
 		etype_result = []
 		location_result = []
@@ -148,10 +149,11 @@ def render_map():
 			title_result.append(document["Name"])
 			stime_result.append(document["Start Time"])
 			etime_result.append(document["End Time"])
+			capacity_result.append(document["Capacity"])
 			date_result.append(document["Date"])
 			etype_result.append(document["Type"])
 			location_result.append(document["Location"])
-		return render_template('map.html', l1 = l1_result, l2 = l2_result, title = title_result, stime = stime_result, etime = etime_result, date = date_result, etype = etype_result, location = location_result)
+		return render_template('map.html', l1 = l1_result, l2 = l2_result, title = title_result, stime = stime_result, etime = etime_result, date = date_result, etype = etype_result, location = location_result, capacity = capacity_result)
 
 @app.route('/pin')
 def render_pin():
@@ -169,12 +171,15 @@ def render_pin_result():
 		stime_result = str(request.args['stime'] +  " " + request.args['sampm'])
 		etime_result = str(request.args['etime'] +  " " + request.args['eampm'])
 		etype_result = str(request.args['etype'])
+		capacity_result = int(request.args['capacity'])
 		location_result = str(request.args['location'])
 		location1_result = float(request.args['location1'])
 		location2_result = float(request.args['location2'])
 		dat_result = time.asctime( time.localtime(time.time()) )
-		mongo.db.events.insert_one( {"Name": title_result, "Type": etype_result, "Date": date_result, "Start Time": stime_result, "End Time": etime_result, "Location": location_result, "N/S Coordinate": location1_result, "E/W Coordinate": location2_result} )
-		return render_template('pin_result.html',  title=title_result, date=date_result, stime=stime_result, etime=etime_result, etype=etype_result, location=location_result, location1=location1_result, location2=location2_result, dat=dat_result)
+		#mongo.db.events.create_index("expires",  expireAfterSeconds = 10)
+		#datetime_object = datetime.strptime("Sep 5 2017 12:00PM", "%b %d %Y %I:%M%p")
+		mongo.db.events.insert_one( {"Name": title_result, "Type": etype_result, "Date": date_result, "Start Time": stime_result, "End Time": etime_result, "Capacity": capacity_result, "Location": location_result, "N/S Coordinate": location1_result, "E/W Coordinate": location2_result }) #"expires": datetime.datetime.isoformat(datetime_object)} )
+		return render_template('pin_result.html',  title=title_result, date=date_result, stime=stime_result, etime=etime_result, etype=etype_result, location=location_result, location1=location1_result, location2=location2_result, dat=dat_result, capacity = capacity_result)
 	except ValueError:
 		return "Sorry: something went wrong."
 

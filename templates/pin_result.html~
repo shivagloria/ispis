@@ -25,7 +25,7 @@ x {
 <p> <b>Time:</b> {{ stime }} - {{ etime }}</p>
 <p> <b>Type:</b> {{ etype }} </p>
 <p> <b>Location:</b> {{ location }} </p>
-<p> <b>Location Coordinates:</b> {{ session['location1'] }}, {{ session['location2']}}</p>
+<p> <b>Location Coordinates:</b> {{ location1 }}, {{ location2 }}</p>
 <x> [ Created: {{ dat }} ] <x>
 <br><br>
 <form action="/map">
