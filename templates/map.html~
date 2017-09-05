@@ -75,7 +75,8 @@ h2 {
 			var tl1 = templ1[x];
 			var tl2 = templ2[x];
 			var ttitle = temptitle[x];
-			var ttime = temptime[x];
+			var tstime = tempstime[x];
+			var tetime = tempetime[x];
 			var tdate = tempdate[x];
 			var tetype = tempetype[x];
 			var tlocation = templocation[x];

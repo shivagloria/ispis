@@ -121,7 +121,7 @@ def authorized():
         return redirect(url_for('home'))
     
     if not isMember:
-        session.clear() # Must clear session before adding flash message
+        session.clear()
         message = 'Unable to login: ' + github_userid + ' is not a member of ' + org_name + \
           '</p><p><a href="https://github.com/logout" target="_blank">Logout of github as user:  ' + github_userid + \
           '</a></p>' 
@@ -173,7 +173,7 @@ def render_pin_result():
 		location1_result = float(request.args['location1'])
 		location2_result = float(request.args['location2'])
 		dat_result = time.asctime( time.localtime(time.time()) )
-		mongo.db.events.insert_one( {"Name": title_result, "Type": etype_result, "Date": date_result, "Start Time": stime_result, "End Time": etime_result, "Location": location_result, "N/S Coordinate": location1_result, "E/W Coordinate": location2_result})
+		mongo.db.events.insert_one( {"Name": title_result, "Type": etype_result, "Date": date_result, "Start Time": stime_result, "End Time": etime_result, "Location": location_result, "N/S Coordinate": location1_result, "E/W Coordinate": location2_result} )
 		return render_template('pin_result.html',  title=title_result, date=date_result, stime=stime_result, etime=etime_result, etype=etype_result, location=location_result, location1=location1_result, location2=location2_result, dat=dat_result)
 	except ValueError:
 		return "Sorry: something went wrong."
