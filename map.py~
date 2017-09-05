@@ -143,6 +143,7 @@ def render_map():
 		date_result = []
 		etype_result = []
 		location_result = []
+		mon_result = []
 		for document in mongo.db.events.find():
 			l1_result.append(document["N/S Coordinate"])
 			l2_result.append(document["E/W Coordinate"])
@@ -153,7 +154,8 @@ def render_map():
 			date_result.append(document["Date"])
 			etype_result.append(document["Type"])
 			location_result.append(document["Location"])
-		return render_template('map.html', l1 = l1_result, l2 = l2_result, title = title_result, stime = stime_result, etime = etime_result, date = date_result, etype = etype_result, location = location_result, capacity = capacity_result)
+			mon_result.append(document["Month"])
+		return render_template('map.html', l1 = l1_result, l2 = l2_result, title = title_result, stime = stime_result, etime = etime_result, date = date_result, etype = etype_result, location = location_result, capacity = capacity_result, mon = mon_result)
 
 @app.route('/pin')
 def render_pin():
@@ -173,6 +175,30 @@ def render_pin_result():
 		title_result = str(request.args['title'])
 		day_result = int(request.args['day'])
 		month_result = int(request.args['month'])
+		if (month_result == 1):
+			mon = "January" 
+		if (month_result == 2):
+			mon = "February" 
+		if (month_result == 3):
+			mon = "March" 
+		if (month_result == 4):
+			mon = "April" 
+		if (month_result == 5):
+			mon = "May" 
+		if (month_result == 6):
+			mon = "June" 
+		if (month_result == 7):
+			mon = "July" 
+		if (month_result == 8):
+			mon = "August" 
+		if (month_result == 9):
+			mon = "September" 
+		if (month_result == 10):
+			mon = "October" 
+		if (month_result == 11):
+			mon = "November" 
+		if (month_result == 12):
+			mon = "December" 
 		year_result = int(request.args['year'])
 		date_result = str(request.args['month'] + " " + request.args['day'] +  ", " + request.args['year'])
 		stime_result = int(request.args['stime'])
@@ -194,10 +220,9 @@ def render_pin_result():
 		session['location2'] = location2_result
 		ts = datetime(year_result,month_result,day_result,etime_result,0,0,0)
 		utc = ts.astimezone(timezone('UTC'))
-		#utc_ts = datetime.datetime.utcfromtimestamp(timestamp)
 		mongo.db.events.create_index("expiress", expireAfterSeconds=int(0))
-		mongo.db.events.insert_one( {"Name": title_result, "Type": etype_result, "Date": date_result, "Start Time": stime_result, "End Time": etime_result, "Capacity": capacity_result, "Location": location_result, "N/S Coordinate": location1_result, "E/W Coordinate": location2_result, "expiress": utc} )
-		return render_template('pin_result.html',  title=title_result, date=date_result, stime=stime_result, etime=etime_result, etype=etype_result, location=location_result, location1=location1_result, location2=location2_result, dat=dat_result, capacity = capacity_result)
+		mongo.db.events.insert_one( {"Name": title_result, "Type": etype_result, "Date": date_result, "Start Time": stime_result, "End Time": etime_result, "Capacity": capacity_result, "Location": location_result, "N/S Coordinate": location1_result, "E/W Coordinate": location2_result, "expiress": utc, "Month": mon, "Day": day_result, "Year": year_result} )
+		return render_template('pin_result.html',  title=title_result, date=date_result, stime=stime_result, etime=etime_result, etype=etype_result, location=location_result, location1=location1_result, location2=location2_result, dat=dat_result, capacity = capacity_result, mon = mon, day = day_result, year=year_result)
 	except ValueError:
 		return "Sorry: something went wrong."
 
