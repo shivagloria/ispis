@@ -141,16 +141,14 @@ def render_map():
 		date_result = []
 		etype_result = []
 		location_result = []
-		parser = htmlparser.HTMLParser()
 		for document in mongo.db.events.find():
 			l1_result.append(document["N/S Coordinate"])
 			l2_result.append(document["E/W Coordinate"])
 			title_result.append(document["Name"])
-			time_result.append(parser.unescape(document["Time"]))
+			time_result.append(document["Time"])
 			date_result.append(document["Date"])
 			etype_result.append(document["Type"])
 			location_result.append(document["Location"])
-
 		return render_template('map.html', l1 = l1_result, l2 = l2_result, title = title_result, time = time_result, date = date_result, etype = etype_result, location = location_result)
 
 @app.route('/pin')
@@ -160,6 +158,11 @@ def render_pin():
 @app.route('/about')
 def render_about():
     return render_template('about.html')
+
+
+@app.route('/pinhere')
+def render_pinhere():
+    return render_template('pinhere.html')
 
 @app.route('/pin_result')
 def render_pin_result():

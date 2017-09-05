@@ -99,7 +99,8 @@ h2 {
               		lng: position.coords.longitude
             	};   
             	infoWindow.setPosition(pos);
-            	infoWindow.setContent('You Are Here!') 
+				var str = "Create Event Here";
+            	infoWindow.setContent('You Are Here! <br> (' + position.coords.latitude + ", " + position.coords.longitude + ") <br>" +   str.link("/pinhere"));
             	infoWindow.open(map);
             	map.setCenter(pos);
 				TestMarker();

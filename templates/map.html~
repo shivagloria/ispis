@@ -99,7 +99,8 @@ h2 {
               		lng: position.coords.longitude
             	};   
             	infoWindow.setPosition(pos);
-            	infoWindow.setContent('You Are Here!') 
+				var str = "Create Event Here";
+            	infoWindow.setContent('You Are Here! <br> (' + position.coords.latitude + ", " + position.coords.longitude + ") <br>" +   str.link("https://ispis.herokuapp.com/pinhere"));
             	infoWindow.open(map);
             	map.setCenter(pos);
 				TestMarker();
@@ -133,9 +134,9 @@ function addMarkerText(marker, ttitle, ttime, tdate, tetype, tlocation){
             var contentString = '<div id="content">'+
               '<div id="mtext">'+
               '</div>'+
-              '<h2>{{ ttitle }}</h2>'+
+              '<h2>'+ttitle+'</h2>'+
               '<div id="bodyContent">'+
-              '<b>Type: </b>'+ '<stuff> '+tetype+'</stuff>' + '<br><b>Date:</b>' + '<stuff> {{ date }}[0] </stuff>' + '<br><b>Time: </b>' + '<stuff>{{ ttime }} </stuff>' +'<br><b>Location: </b>'+ '<stuff>{{ tlocation }}</stuff>'
+              '<b>Type: </b>'+ '<stuff> '+tetype+'</stuff>' + '<br><b>Date:</b>' + '<stuff> '+tdate+' </stuff>' + '<br><b>Time: </b>' + '<stuff>'+ttime+' </stuff>' +'<br><b>Location: </b>'+ '<stuff>'+tlocation+'</stuff>'
               '</div>'+
               '</div>';
             var infowindow = new google.maps.InfoWindow({
