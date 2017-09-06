@@ -49,17 +49,13 @@ h2 {
         margin: 0;
         padding: 0;
       }
-    </style>
-       
-  
-       
-        
+    </style>  
 </head>
 <body>
 
 <center><h1> <u>Events </u></h1>
        <a href="/"> Home</a>  ~*~  <a href="/pin"> Create Event</a>  ~*~  <a href="/about"> About/Help </a><br><br>
-	<b>Please share your location to load map (may take up to 10 seconds). <a href="/about"> Click here</a> for troubleshooting (if markers and geolocator fail to load).  </b><br><br><form action="/rsvp"> <input type="text" name="eventtitle" value="Type Exact Event Name" onblur="if (this.value == '') {this.value = 'Type Exact Event Name';}" onfocus="if (this.value == 'Type Exact Event Name') {this.value = '';}><button type="submit">RSVP to Event</button></form></center>
+	<b>Please share your location to load map (may take up to 10 seconds). <a href="/about"> Click here</a> for troubleshooting (if markers and geolocator fail to load).  </b><br><br><form action="/rsvp"> <input type="text" name="eventtitle" value="Type Exact Event Name" onblur="if (this.value == '') {this.value = 'Type Exact Event Name';}" onfocus="if (this.value == 'Type Exact Event Name') {this.value = '';}"><button type="submit">RSVP to Event</button></form></center>
     <div id="map"></div>
     <script> 
       var map, infoWindow, marker;

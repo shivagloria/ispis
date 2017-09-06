@@ -1,6 +1,5 @@
-{%  extends "layout.html" %}
 
-{%  block title %}Create Event{%  endblock %}
+{%  block title %}{%  endblock %}
 
 {%  block content %}
 <style>
@@ -10,37 +9,65 @@ h1 {
 	font-weight: bold;
 }
 
+input {
+    font-family: "Lucida Console", serif;
+    font-size: 12px;
+}
+body,a {
+ background-color: #eef;
+    color: black;
+}
+
 b {
-	font-family: "Lucida Console", serif;
-    font-size: 20px;
+    font-family: "Lucida Console", serif;
+    font-size: 12px;
+   font-weight: bold; 
 }
+
+stuff {
+    font-size:13px;
+     font-family: "Lucida Console", serif;;
+}
+
+h2 {
+    font-size:16px;
+
+}
+
 x {
-    font-family: "Lucida Console", serif;
-    font-size: 17px;
-}
-m {
-    font-family: "Lucida Console", serif;
-    font-size: 22px;
+    font-size:12px;
+
 }
 </style>
-<h1><center><u>Create Event</u></center></h1><br><br>
+
+
+<head>
+	<title>View Events - ISPI(s)</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      #map {
+        height: 100%;
+      }
+      html, body {
+        height: 60%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+       
+  
+       
+        
+</head>
+  <body>
+<center><h1> <u>Create Event </u></h1>
+       <a href="/"> Home</a>  ~*~  <a href="/map">View Events</a>  ~*~  <a href="/about"> About/Help </a><br><br></center>
 <form action="/pin_result" name="pin">
 <x>	<b> Event Title: </b>
 	<input type="text" name="title" value="Name of Event"  onblur="if (this.value == '') {this.value = 'Name of Event';}" onfocus="if (this.value == 'Name of Event') {this.value = '';}" ><br><br>
 	<b> Date: </b>
 	<select name="month">
-		<!--<option value="January">January</option>
-   		<option value="February">February</option>
-   		<option value="March">March</option>
-    	<option value="April">April</option>
-   	 	<option value="May">May</option>
-    	<option value="June">June</option>
-    	<option value="July">July</option>
-    	<option value="August">August</option>
-    	<option value="September">September</option>
-    	<option value="October">October</option>
-    	<option value="November">November</option>
-    	<option value="December">December</option> -->
 		<option value="1">January</option>
    		<option value="2">February</option>
    		<option value="3">March</option>
@@ -69,7 +96,7 @@ m {
     	<option value="8">08:00</option>
     	<option value="9">09:00</option>
     	<option value="10">10:00</option>
-    	<option value="11">11:00</option> -->
+    	<option value="11">11:00</option> 
 		<option value="12">12:00</option>
    		<option value="13">13:00</option>
    		<option value="14">14:00</option>
@@ -96,7 +123,7 @@ m {
     	<option value="8">08:00</option>
     	<option value="9">09:00</option>
     	<option value="10">10:00</option>
-    	<option value="11">11:00</option> -->
+    	<option value="11">11:00</option> 
 		<option value="12">12:00</option>
    		<option value="13">13:00</option>
    		<option value="14">14:00</option>
@@ -123,10 +150,88 @@ m {
 	<b> Building/Location Name: </b>
 	<input type="text" name="location" value="Asante House" onblur="if (this.value == '') {this.value = 'Asante House';}" onfocus="if (this.value == 'Asante House') {this.value = '';}"><br><br>
 	<b> Location Coordinates (N/S, W/E): </b>
-	<input type="text" name="location1" value="32.8801" onblur="if (this.value == '') {this.value = '32.8801';}" onfocus="if (this.value == '32.8801') {this.value = '';}">
-	<input type="text" name="location2" value="-117.2340" onblur="if (this.value == '') {this.value = '-117.2340';}" onfocus="if (this.value == '-117.2340') {this.value = '';}"><br><br></x><br><br>
+	<input type="text" name="location1" id='n/s' value="32.8801" onblur="if (this.value == '') {this.value = '32.8801';}" onfocus="if (this.value == '32.8801') {this.value = '';}">
+	<input type="text" name="location2" id='e/w' value="-117.2340" onblur="if (this.value == '') {this.value = '-117.2340';}" onfocus="if (this.value == '-117.2340') {this.value = '';}"><br><br></x><br><br>
 	<center><m><input type="submit" value="List My Event!"></m></center>
-</form>
+</form><br><br><center><b>To find the coordinates for your event:</b> Drag the pin on the map below to the desired location and click to show the coordinates. Note: coordinates do not update automatically. Each time you move the pin, you will have to reclick to show updated coordinates. Once you have the correct coordinates, copy them into the location fields above to add your event to this location.</center><br><br>
+    <div id="map"></div>
+    <script>
+      var map, infoWindow, marker;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 32.8801, lng: -117.2340},
+          zoom: 6
+        });
+        infoWindow = new google.maps.InfoWindow;
 
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+map = new google.maps.Map(document.getElementById('map'), {
+			center: {lat: position.coords.latitude, lng: position.coords.longitude}, zoom: 16 });
+            map.setCenter(pos);
+			var p1 = position.coords.latitude
+			var p2 = position.coords.longitude
+			addMarker(pos, p1, p2);
+
+          }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+          });
+        } else {
+
+          handleLocationError(false, infoWindow, map.getCenter());
+        }
+      }
+
+      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+                              'Error: The Geolocation service failed.' :
+                              'Error: Your browser doesn\'t support geolocation.');
+        infoWindow.open(map);
+      }
+
+function addMarker(pos, p1, p2){
+        marker = new google.maps.Marker({
+            position: pos,
+            map: map,
+			draggable: true
+			
+        });
+var pos1 = marker.getPosition().lat();
+var pos2 = marker.getPosition().lng();
+addMarkerText(marker, pos1, pos2);
+}
+
+
+
+function addMarkerText(marker, pos1, pos2){
+        google.maps.event.addListener(marker,'click',function() {
+			var pos1 = marker.getPosition().lat();
+			var pos2 = marker.getPosition().lng();
+			document.getElementById('n/s').value=pos1
+			document.getElementById('e/w').value=pos2
+            var contentString = '<div id="content">'+
+              '<div id="mtext">'+
+              '</div>'+
+              '<stuff><center> Coordinates at this location: <br>'+pos1+ ", " +pos2+'</center></stuff>'+
+              '</div>';
+			
+            var infowindow = new google.maps.InfoWindow({
+                content:contentString
+        });
+        infowindow.open(map,marker);
+          });
+        }
+
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxO5GbWNNwK20cyb7qqNqmVBp_HE7DeLw&callback=initMap">
+    </script>
+  </body>
+</html>
 
 {%  endblock %}
