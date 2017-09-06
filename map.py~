@@ -238,13 +238,20 @@ def render_pin_result():
 		session['location'] = location_result
 		session['location1'] = location1_result
 		session['location2'] = location2_result
-		pacific = timezone('America/Los_Angeles')
+		pacific = pytz.timezone('America/Los_Angeles')
 		ts = datetime(year_result,month_result,day_result,etime_result,0,0,0, tzinfo=pacific)
+		ts2 = pacific.localize(datetime(year_result,month_result,day_result,etime_result,0,0,0))
+		pytz.utc.normalize(ts)
+		pytz.utc.normalize(ts2)
+		utcnow = datetime(year_result,month_result,day_result,etime_result,0,0,0, tzinfo=pytz.utc)
+		utcnow2 = pytz.utc.localize(datetime(year_result,month_result,day_result,etime_result,0,0,0))
+		pacific.normalize(utcnow)
+		pacific.normalize(utc2now)
 		print (ts,file=sys.stderr)
 		utc = ts.astimezone(timezone('UTC'))
 		print (utc,file=sys.stderr)
 		mongo.db.events.create_index("expiress", expireAfterSeconds=int(0))
-		mongo.db.events.insert_one( {"Name": title_result, "Type": etype_result, "Date": date_result, "Start Time": stime_result, "End Time": etime_result, "Capacity": capacity_result, "Location": location_result, "N/S Coordinate": location1_result, "E/W Coordinate": location2_result, "expiress": utc, "Month": mon, "Day": day_result, "Year": year_result} )
+		mongo.db.events.insert_one( {"Name": title_result, "Type": etype_result, "Date": date_result, "Start Time": stime_result, "End Time": etime_result, "Capacity": capacity_result, "Location": location_result, "N/S Coordinate": location1_result, "E/W Coordinate": location2_result, "expiress": utc2now, "Month": mon, "Day": day_result, "Year": year_result} )
 		return render_template('pin_result.html',  title=title_result, date=date_result, stime=stime_result, etime=etime_result, etype=etype_result, location=location_result, location1=location1_result, location2=location2_result, dat=dat_result, capacity = capacity_result, mon = mon, day = day_result)
 	except ValueError:
 		return "Sorry: something went wrong."
