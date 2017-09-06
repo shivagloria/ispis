@@ -32,6 +32,29 @@ form {
 <p> <b>Location:</b> {{ location }} </p>
 <p> <b>Location Coordinates:</b> {{ l1 }}, {{ l2 }}</p>
 <center>
+
+<form id="gform" method="POST" action="https://script.google.com/macros/s/AKfycbyzDgskeb4vhxevrHqyzQxgWHPkxySDJmoJN9j-Fe7kHUUJbOA/exec">
+
+    <fieldset>
+        <textarea style="display:none" id="message" name="message" rows="6">Event: {{ title }},   Date: {{ mon }} {{ day }}, {{ year }},   Time: {{ stime }}:00 - {{ etime }}:00,   Type: {{ etype }},   Location: {{ location }},   Coordinates:{{ l1 }}, {{ l2 }}</textarea>
+    </fieldset>
+
+    <fieldset>
+        <label for="email">Your Email Address:</label>
+        <input id="email" name="email" type="email" value="" required placeholder="youremail@gmail.com"/>
+        <span id="email-invalid" style="display:none">Must be a valid email address</span>
+    </fieldset>
+
+    <button>
+        Send
+    </button> <br><br>
+
+</form>
+
+<script data-cfasync="false" type="text/javascript"
+  src="https://cdn.rawgit.com/dwyl/html-form-send-email-via-google-script-without-server/master/form-submission-handler.js"></script>
+</script>
+
 <form action="/map">
     <button type="submit">Return to Map</button>
 </form><br><br>
