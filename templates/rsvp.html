@@ -21,7 +21,11 @@ form {
 	font-size: 20px;
 
 }
+l {
+	font-family: "Lucida Console", serif;
+	font-size: 15px;
 
+}
 </style>
 <h1><center><b><u>Thank you for RSVP'ing!</u></b></center></h1><br><br>
 <p> <b>Event:</b> {{ title }}  </p>
@@ -31,7 +35,7 @@ form {
 <p> <b>Capacity:</b> {{ capacity }} </p>
 <p> <b>Location:</b> {{ location }} </p>
 <p> <b>Location Coordinates:</b> {{ l1 }}, {{ l2 }}</p>
-<center>
+<center><br><br>
 
 <form id="gform" method="POST" action="https://script.google.com/macros/s/AKfycbyzDgskeb4vhxevrHqyzQxgWHPkxySDJmoJN9j-Fe7kHUUJbOA/exec">
 
@@ -39,15 +43,15 @@ form {
         <textarea style="display:none" id="message" name="message" rows="6">Event: {{ title }},   Date: {{ mon }} {{ day }}, {{ year }},   Time: {{ stime }}:00 - {{ etime }}:00,   Type: {{ etype }},   Location: {{ location }},   Coordinates:{{ l1 }}, {{ l2 }}</textarea>
     </fieldset>
 
-    <fieldset>
+    <fieldset><l>
         <label for="email">Your Email Address:</label>
         <input id="email" name="email" type="email" value="" required placeholder="youremail@gmail.com"/>
         <span id="email-invalid" style="display:none">Must be a valid email address</span>
+		<button>
+        Send Event Details 
+    </button></l>
     </fieldset>
-
-    <button>
-        Send
-    </button> <br><br>
+     <br>
 
 </form>
 
