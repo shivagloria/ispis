@@ -62,7 +62,7 @@ x {
 </head>
   <body>
 <center><h1> <u>Create Event </u></h1>
-       <a href="/"> Home</a>  ~*~  <a href="/map">View Events</a>  ~*~  <a href="/about"> About/Help </a><br><br></center>
+       <a href="/"> Home</a>  ~*~  <a href="https://ispis.herokuapp.com/map">View Events</a>  ~*~  <a href="/about"> About/Help </a><br><br></center>
 <form action="/pin_result" name="pin">
 <x>	<b> Event Title: </b>
 	<input type="text" name="title" value="Name of Event"  onblur="if (this.value == '') {this.value = 'Name of Event';}" onfocus="if (this.value == 'Name of Event') {this.value = '';}" ><br><br>
@@ -213,6 +213,7 @@ function addMarkerText(marker, pos1, pos2){
 			var pos1 = marker.getPosition().lat();
 			var pos2 = marker.getPosition().lng();
 			document.getElementById('n/s').value=pos1
+			document.getElementById('e/w').value=pos2
             var contentString = '<div id="content">'+
               '<div id="mtext">'+
               '</div>'+

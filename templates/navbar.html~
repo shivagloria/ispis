@@ -16,7 +16,7 @@
             <!-- BLOCK 3 -->
             <!-- Replace the '#' with links to each of your converters -->
             <ul class="nav navbar-nav">
-                <li><a href="/map">View Events</a></li>
+                <li><a href="https://ispis.herokuapp.com/map">View Events</a></li>
                 <li><a href="/pin">Create Event</a></li>
                 <li><a href="/about">About/Help</a></li>
             </ul>
@@ -31,7 +31,7 @@
 	    <img src="{{ session['user_data']['avatar_url'] }}&s=30" 
 		 width="30" height="30" style="display: inline-block;" ></a></li>
 	<li><p class="navbar-text">{{ session['user_data']['name']}}</p></li>	
-        <li><p class="navbar-text">Github userid: {{ session['user_data']['login']}}</li>
+        <li><p class="navbar-text">Username: {{ session['user_data']['login']}}</li>
 	{% endif %}
   
         <!-- Displays the correct button to log the user in or out -->
