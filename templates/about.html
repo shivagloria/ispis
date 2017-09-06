@@ -4,29 +4,57 @@
 
 {%  block content %}
 <style>
-h1,x {
+h1,x, fieldset,button {
     font-family: "Lucida Console", serif;
 }
 h1 {
     font-size: 40px;
 }
-x {
+x, fieldset, button {
     font-size: 15px;
 }
 </style>
 <center><h1><b><u>Welcome to ISPI(s)!</u></b></h1><br><br>
 <x>Planning a party? Need a study buddy? Bored on a Friday night? <br><br><b> ISPI(s) is here to help! </b><br><br> Our goal is to provide hosts with a way to publicize their events, and UCSD students a way to better connect with their community. <br><br>To add an event you're hosting to our site, please visit our <a href="/pin">Create an Event Pin</a> page. <br><br>To view events, please visit our <a href="/map">View Event Map</a> page. <br><br><br><br><br><b>A NOTE ON BROWSERS:</b> If the event map fails to load in your browser, here are some things to try: <br><br><ul> <li> Take the question mark off of the end of the URL (if it exists) and reload the page </li> <li> Change the URL prefix to https:// and reload the page </li></ul><br><br><br>For other issues or suggestions, please contact us using this form:<br><br>
 
-<form action="mailto:sgdas@ucsd.edu" method="post" enctype="text/plain">
-Name:<br>
-<input type="text" name="name"><br>
-E-mail:<br>
-<input type="text" name="mail"><br>
-Comment:<br>
-<input type="text" name="comment" size="50"><br><br>
-<input type="submit" value="Send">
-<input type="reset" value="Reset">
-</form></x></center>
+<center>
 
+<form id="gform" method="POST" action="https://script.google.com/macros/s/AKfycbz7pDTMMnQ4D2SaI5leVsq8RgBmr8B6phGW4rScdDwyO6BtiNsS/exec">
+
+    <fieldset>
+      <label for="name">Name: </label><br>
+      <input id="name" name="name" placeholder="" />
+    </fieldset><br>
+
+    <fieldset>
+      <label for="email">Your Email Address:</label><br>
+      <input id="email" name="email" type="email" value=""
+      required placeholder=""/>
+      <span id="email-invalid" style="display:none">
+        Must be a valid email address</span>
+    </fieldset><br>
+
+    <fieldset>
+      <label for="message">Message: </label><br>
+      <textarea id="message" name="message" style="width: 436px"  rows="4"
+      placeholder=""></textarea>
+    </fieldset><br>
+
+    <button>
+        Send 
+    </button> 
+
+</form>
+
+<div style="display:none;" id="thankyou_message">
+    <h2>Thanks for contacting us!
+      We will get back to you soon!</h2>
+</div><br><br><br>
+
+</center>
+
+<script data-cfasync="false" type="text/javascript"
+  src="https://cdn.rawgit.com/dwyl/html-form-send-email-via-google-script-without-server/master/form-submission-handler.js"></script>
+</script>
 
 {%  endblock %}
