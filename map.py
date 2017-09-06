@@ -171,7 +171,20 @@ def render_about():
 
 @app.route('/rsvp')
 def render_rsvp():
-	return render_template('rsvp.html')
+	name = str(request.args['eventtitle'])
+	document = mongo.db.events.find_one({ 'Name': name })
+	l1_result = document["N/S Coordinate"]
+	l2_result = document["E/W Coordinate"]
+	stime_result = document["Start Time"]
+	etime_result = document["End Time"]
+	capacity_result = document["Capacity"]
+	date_result = document["Date"]
+	etype_result = document["Type"]
+	location_result = document["Location"]
+	mon_result = document["Month"]
+	day_result = document["Day"]
+	year_result = document["Year"]
+	return render_template('rsvp.html', l1 = l1_result, l2 = l2_result, stime = stime_result, etime = etime_result, date = date_result, etype = etype_result, location = location_result, capacity = capacity_result, mon = mon_result, day = day_result, year=year_result, title = name)
 
 @app.route('/pin_result')
 def render_pin_result():
@@ -214,6 +227,9 @@ def render_pin_result():
 		location2_result = float(request.args['location2'])
 		dat_result = time.asctime( time.localtime(time.time()) )
 		session['title'] = title_result
+		session['month'] = month_result
+		session['day'] = day_result
+		session['year'] = year_result
 		session['date'] = date_result
 		session['stime'] = stime_result
 		session['etime'] = etime_result
@@ -226,7 +242,7 @@ def render_pin_result():
 		utc = ts.astimezone(timezone('UTC'))
 		mongo.db.events.create_index("expiress", expireAfterSeconds=int(0))
 		mongo.db.events.insert_one( {"Name": title_result, "Type": etype_result, "Date": date_result, "Start Time": stime_result, "End Time": etime_result, "Capacity": capacity_result, "Location": location_result, "N/S Coordinate": location1_result, "E/W Coordinate": location2_result, "expiress": utc, "Month": mon, "Day": day_result, "Year": year_result} )
-		return render_template('pin_result.html',  title=title_result, date=date_result, stime=stime_result, etime=etime_result, etype=etype_result, location=location_result, location1=location1_result, location2=location2_result, dat=dat_result, capacity = capacity_result, mon = mon, day = day_result, year=year_result)
+		return render_template('pin_result.html',  title=title_result, date=date_result, stime=stime_result, etime=etime_result, etype=etype_result, location=location_result, location1=location1_result, location2=location2_result, dat=dat_result, capacity = capacity_result, mon = mon, day = day_result)
 	except ValueError:
 		return "Sorry: something went wrong."
 

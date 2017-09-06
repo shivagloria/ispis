@@ -24,13 +24,13 @@ form {
 
 </style>
 <h1><center><b><u>Thank you for RSVP'ing!</u></b></center></h1><br><br>
-<p> <b>Event:</b> {{ session['title'] }}  </p>
-<p> <b>Date:</b> {{ session['date'] }} </p>
-<p> <b>Time:</b> {{ session['stime'] }}:00 - {{ session['etime'] }}:00</p>
-<p> <b>Type:</b> {{ session['etype'] }} </p>
-<p> <b>Capacity:</b> {{ session['capacity'] }} </p>
-<p> <b>Location:</b> {{ session['location'] }} </p>
-<p> <b>Location Coordinates:</b> {{ session['location1'] }}, {{ session['location2'] }}</p>
+<p> <b>Event:</b> {{ title }}  </p>
+<p> <b>Date:</b> {{ mon }} {{ day }}, {{ year }} </p>
+<p> <b>Time:</b> {{ stime }}:00 - {{ etime }}:00</p>
+<p> <b>Type:</b> {{ etype }} </p>
+<p> <b>Capacity:</b> {{ capacity }} </p>
+<p> <b>Location:</b> {{ location }} </p>
+<p> <b>Location Coordinates:</b> {{ l1 }}, {{ l2 }}</p>
 <center>
 <form action="/map">
     <button type="submit">Return to Map</button>
