@@ -240,9 +240,7 @@ def render_pin_result():
 		session['location1'] = location1_result
 		session['location2'] = location2_result
 		pacific = pytz.timezone('America/Los_Angeles')
-		ts = datetime(year_result,month_result,day_result,etime_result,0,0,0, tzinfo=pacific)
 		ts2 = pacific.localize(datetime(year_result,month_result,day_result,etime_result,0,0,0))
-		pytz.utc.normalize(ts)
 		pytz.utc.normalize(ts2)
 		print (ts,file=sys.stderr)
 		utc = ts.astimezone(timezone('UTC'))
