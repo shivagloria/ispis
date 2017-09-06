@@ -238,7 +238,7 @@ def render_pin_result():
 		session['location'] = location_result
 		session['location1'] = location1_result
 		session['location2'] = location2_result
-		pacific = timezone('US/Pacific')
+		pacific = timezone('US/Pacific-New')
 		ts = datetime(year_result,month_result,day_result,etime_result,0,0,0, tzinfo=pacific)
 		print (ts,file=sys.stderr)
 		utc = ts.astimezone(timezone('UTC'))
