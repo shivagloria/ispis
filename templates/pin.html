@@ -38,6 +38,7 @@ x {
     font-size:12px;
 
 }
+
 </style>
 
 
@@ -152,8 +153,8 @@ x {
 	<b> Location Coordinates (N/S, W/E): </b>
 	<input type="text" name="location1" id='n/s' value="32.8801" onblur="if (this.value == '') {this.value = '32.8801';}" onfocus="if (this.value == '32.8801') {this.value = '';}">
 	<input type="text" name="location2" id='e/w' value="-117.2340" onblur="if (this.value == '') {this.value = '-117.2340';}" onfocus="if (this.value == '-117.2340') {this.value = '';}"><br><br></x><br><br>
-	<center><m><input type="submit" value="List My Event!"></m></center>
-</form><br><br><center><b>To find the coordinates for your event:</b> Drag the pin on the map below to the desired location and click to show the coordinates. Note: coordinates do not update automatically. Each time you move the pin, you will have to reclick to show updated coordinates (the location form will automatically update to the listed coordinates on-click). </center><br><br>
+	<center><input type="submit" value= "List My Event!"></center>
+</form><br><br><center><b>To find the coordinates for your event (wait for the pin to load - may take up to 10 seconds) :</b> Drag the pin on the map below to the desired location and click to show the coordinates. Note: coordinates do not update automatically. Each time you move the pin, you will have to reclick to show updated coordinates (the location form will automatically update to the listed coordinates on-click). </center><br><br>
     <div id="map"></div>
     <script>
       var map, infoWindow, marker;
