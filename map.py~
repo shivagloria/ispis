@@ -13,6 +13,7 @@ import sys
 import traceback
 import time
 from datetime import datetime
+import pytz
 from pytz import timezone
 
 class GithubOAuthVarsNotDefined(Exception):
@@ -243,10 +244,6 @@ def render_pin_result():
 		ts2 = pacific.localize(datetime(year_result,month_result,day_result,etime_result,0,0,0))
 		pytz.utc.normalize(ts)
 		pytz.utc.normalize(ts2)
-		utcnow = datetime(year_result,month_result,day_result,etime_result,0,0,0, tzinfo=pytz.utc)
-		utcnow2 = pytz.utc.localize(datetime(year_result,month_result,day_result,etime_result,0,0,0))
-		pacific.normalize(utcnow)
-		pacific.normalize(utc2now)
 		print (ts,file=sys.stderr)
 		utc = ts.astimezone(timezone('UTC'))
 		print (utc,file=sys.stderr)
