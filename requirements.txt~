@@ -11,4 +11,4 @@ PyGithub==1.26.0
 Flask-PyMongo==0.4.1
 pymongo==3.3.0
 pytz==2015.4
-datetime==3.6.2
+datetime==4.2
