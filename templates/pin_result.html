@@ -21,6 +21,11 @@ m {
     font-family: "Lucida Console", serif;
     font-size: 22px;
 }
+l {
+	font-family: "Lucida Console", serif;
+	font-size: 15px;
+
+}
 
 </style>
 <center><h1><b><u>Your New Event</u></b></h1><br><br>
@@ -33,6 +38,30 @@ m {
 <p> <b>Location Coordinates:</b> {{ location1 }}, {{ location2 }}</p>
 <x> [ Created: {{ dat }} ] <x>
 <br><br><br><br>
+
+<form id="gform" method="POST" action="https://script.google.com/macros/s/AKfycbxSRnNJSN60dOwfPfU5knYuAC6lLpR2vOpriZdLqNfzfJM0m34n/exec">
+
+    <fieldset>
+        <label for="message" style="display:none"></label>
+        <textarea style="display:none" id="message" name="message" rows="6">Event: {{ title }},   Date: {{ mon }} {{ day }}, {{ year }},   Time: {{ stime }}:00 - {{ etime }}:00,   Type: {{ etype }},   Location: {{ location }},   Coordinates:{{ location1 }}, {{ location2 }}</textarea>
+    </fieldset>
+
+    <fieldset><l>
+        <label for="email">Email Address:</label>
+        <input id="email" name="email" type="email" value="" required placeholder="youremail@gmail.com"/>
+        <span id="email-invalid" style="display:none">Must be a valid email address</span>
+	<button>
+            Send My Event Details 
+        </button></l>
+    </fieldset>
+     <br>
+
+</form>
+
+<script data-cfasync="false" type="text/javascript"
+  src="https://cdn.rawgit.com/dwyl/html-form-send-email-via-google-script-without-server/master/form-submission-handler.js"></script>
+</script>
+
 <m><form action="https://ispis.herokuapp.com/map">
     <button type="submit">Return to Map</button>
 </form><br><br></m>
